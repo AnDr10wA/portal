@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<main class="container">
+  <div class="p-4 p-md-5 mb-4 ">
+    <div class="col-md-6 px-0">
+<form action="{% url 'news_create_url' %}" method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+
+    <div class="form-group">
+
+        {{field.label}}
+
+            {{field}}
+                {% if field.errors %}
+        <div class="alert alert-danger">
+            {{field.errors}}
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Create news</button>
+</form>
+    </div>
+  </div>
+</main>
+
+
+{% endblock %}
