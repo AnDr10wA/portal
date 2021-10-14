@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-to6i^#19hm-=btvsoy@g%av+_z#6gqeqxvynm_@r3(7ej!mchr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "172.18.0.1", "172.18.0.3"]
+ALLOWED_HOSTS = ["127.0.0.1", "172.18.0.1", "172.18.0.3"]
 
 
 # Application definition
@@ -80,12 +80,12 @@ WSGI_APPLICATION = 'portal.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ.get("DB_ENGINE", "django.db.backends.postgresql_psycopg2"),
+        'ENGINE': os.environ.get("DB_ENGINE", 'django.db.backends.postgresql_psycopg2'),
         'NAME': os.environ.get("DB_NAME", 'portal_db'),
-          'USER': os.environ.get("DB_USER", "admin_portal"),
-          'PASSWORD': os.environ.get("DB_PASS", "admin_secret"),
-          'HOST': os.environ.get("DB_HOST", "localhost"),
-          'PORT': os.environ.get("DB_PORT", "5432"),
+          'USER': os.environ.get("DB_USER", 'admin_portal'),
+          'PASSWORD': os.environ.get("DB_PASS", 'admin_secret'),
+          'HOST': os.environ.get("DB_HOST", 'localhost'),
+          'PORT': os.environ.get("DB_PORT", '5432'),
     }
 }
 
@@ -127,9 +127,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [STATIC_DIR]
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_DIR = os.path.join(BASE_DIR, 'static')
+# STATICFILES_DIRS = [STATIC_DIR]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # Default primary key field type
