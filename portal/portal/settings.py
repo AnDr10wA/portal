@@ -144,6 +144,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
+EMAIL_BACKEND= 'django.core.mail.backends.console.EmailBackend'
+
+
 CKEDITOR_CONFIGS = {
     'default': {
         'skin': 'moono',
