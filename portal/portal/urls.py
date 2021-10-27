@@ -18,8 +18,10 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+from .view import main_page
 
 urlpatterns = [
+    path('', main_page, name = 'main_page'),
     path('admin/', admin.site.urls),
     path('news/', include('news.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
@@ -33,7 +35,7 @@ urlpatterns = [
     path('reset/done',
          auth_views.PasswordResetCompleteView.as_view(template_name = 'password_reset_complete.html'),
          name='password_reset_complete'),
-
+    path('forum/', include('forum.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
