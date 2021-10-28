@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'cotalog',
     'help',
     'accounts',
+    'forum',
 ]
 
 MIDDLEWARE = [

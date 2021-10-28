@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+{% for category in categoryes %}
+<a href="{{ category.get_absolute_url }}" class="stretched-link">{{category}}</a>
+{% endfor %}
+
+{% endblock %}
