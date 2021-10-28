@@ -35,5 +35,4 @@ def save_message(request):
     topic_form = form.cleaned_data['topic']
     topic = TopicForum.objects.get(title = topic_form)
 
-
     return topic_detail(request=request, slug = topic.slug)
