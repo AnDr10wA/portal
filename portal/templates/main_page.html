@@ -4,28 +4,68 @@
 
 <!-- TradingView Widget BEGIN -->
 <div class="tradingview-widget-container">
-  <div id="tradingview_884d3"></div>
-  <div class="tradingview-widget-copyright"><a href="https://ru.tradingview.com/symbols/BTCUSD/?exchange=BINANCEUS" rel="noopener" target="_blank"><span class="blue-text">График BTCUSD</span></a> от TradingView</div>
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://ru.tradingview.com" rel="noopener" target="_blank"><span class="blue-text">Финансовые рынки</span></a> от TradingView</div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+  {
+  "symbols": [
+    {
+      "proName": "FOREXCOM:SPXUSD",
+      "title": "S&P 500"
+    },
+    {
+      "proName": "FOREXCOM:NSXUSD",
+      "title": "NASDAQ 100"
+    },
+    {
+      "proName": "FX_IDC:EURUSD",
+      "title": "EUR/USD"
+    },
+    {
+      "proName": "BITSTAMP:BTCUSD",
+      "title": "BTC/USD"
+    },
+    {
+      "proName": "BITSTAMP:ETHUSD",
+      "title": "ETH/USD"
+    }
+  ],
+  "showSymbolLogo": true,
+  "colorTheme": "dark",
+  "isTransparent": false,
+  "displayMode": "compact",
+  "locale": "ru"
+}
+  </script>
+</div>
+
+
+
+
+<div class="tradingview-widget-container">
+  <div id="tradingview_523a9"></div>
+  <div class="tradingview-widget-copyright"><a href="https://ru.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener" target="_blank"><span class="blue-text">График AAPL</span></a> от TradingView</div>
   <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
   <script type="text/javascript">
   new TradingView.widget(
   {
   "width": 980,
   "height": 610,
-  "symbol": "BINANCEUS:BTCUSD",
+  "symbol": "NASDAQ:AAPL",
   "interval": "D",
   "timezone": "Etc/UTC",
-  "theme": "light",
+  "theme": "dark",
   "style": "1",
   "locale": "ru",
   "toolbar_bg": "#f1f3f6",
   "enable_publishing": false,
   "allow_symbol_change": true,
-  "container_id": "tradingview_884d3"
+  "container_id": "tradingview_523a9"
 }
   );
   </script>
 </div>
-<!-- TradingView Widget END -->
 
+
+<!-- TradingView Widget END -->
 {% endblock %}

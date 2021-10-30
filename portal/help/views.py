@@ -12,7 +12,7 @@ class MessageForm(forms.ModelForm):
 
 def get_message_form(request):
     form = MessageForm()
-    return render(request, 'index.html', {'form':form})
+    return render(request, 'help.html', {'form':form})
 
 
 def save_form(request):

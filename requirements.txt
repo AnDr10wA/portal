@@ -3,3 +3,5 @@ psycopg2-binary
 Pillow
 django-ckeditor
 gunicorn
+scrapy
+scrapy-djangoitem
