@@ -1,0 +1,73 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-3">
+<main>
+ <main>
+    <div class="row row-cols-1 row-cols-md-3 mb-5 text-center">
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+
+          <div class="card-body">
+                <img src="{{ product.image.url }}"  width="375" height="300">
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+
+          <div class="card-body">
+                <img src="{{ product.image2.url }}"  width="375" height="300">
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm border-primary">
+
+          <div class="card-body">
+                <img src="{{ product.image3.url }}"  width="375" height="300">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="display-6 text-center mb-4">Технические характеристики</h2>
+
+    <div class="table-responsive">
+      <table class="table text-center">
+
+        <tbody>
+          <tr>
+            <th scope="row" class="text-start">Производитель</th>
+            <td>{{product.manufacture}}</td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start">Модель</th>
+            <td>{{product.model_product}}</td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start">Производитель графического процессора</th>
+            <td>{{product.company}}</td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start">Графический процессор</th>
+            <td>{{product.processor}}</td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-start">Видеопамять</th>
+            <td>{{product.videomemory}} GB</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+</div>
+
+
+
+{% endblock %}

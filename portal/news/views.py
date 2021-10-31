@@ -7,7 +7,9 @@ from .utils import *
 
 def news_list(request):
     news = News.objects.all()
-    return render(request, 'main.html', {'news':news})
+    last_news = News.objects.last()
+
+    return render(request, 'main.html', {'news':news, 'last_news': last_news})
 
 
 class NewsDetail(ObjectsDetailMixin, View):

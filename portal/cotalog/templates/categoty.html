@@ -13,16 +13,16 @@
         {% for category in cotalog %}
         <div class="col">
           <div class="card shadow-sm">
-             <img src="{{ category.image.url }}"  width="300" height="400">
+             <img src="{{ category.image.url }}"  width="375" height="300">
 
             <div class="card-body">
-              <p class="card-text">{{category.name }}</p>
+
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a href="{{ category.get_absolute_url }}" class="stretched-link">Continue reading</a>
+                  <a href="{{ category.get_absolute_url }}" class="stretched-link">{{category.name }}</a>
 
                 </div>
-                <small class="text-muted">9 mins</small>
+
               </div>
             </div>
           </div>

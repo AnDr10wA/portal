@@ -81,6 +81,8 @@ class Motherboard(Product):
         verbose_name = 'Материнская плата'
         verbose_name_plural = 'Материнские платы'
 
+    def get_absolute_url(self):
+        return reverse('product_detail_url',kwargs={'slug':self.slug, 'category': self.category.slug})
 
 class Processor(Product):
 
@@ -91,6 +93,9 @@ class Processor(Product):
     class Meta:
         verbose_name = 'Процессор'
         verbose_name_plural = 'Процессоры'
+
+    def get_absolute_url(self):
+        return reverse('product_detail_url',kwargs={'slug':self.slug, 'category': self.category.slug})
 
 class PowerBlock(Product):
 
@@ -103,6 +108,9 @@ class PowerBlock(Product):
         verbose_name = 'Блок питания'
         verbose_name_plural = 'Блоки питания'
 
+    def get_absolute_url(self):
+        return reverse('product_detail_url',kwargs={'slug':self.slug, 'category': self.category.slug})
+
 class RAMemory(Product):
     frequency = models.IntegerField(verbose_name='Частота памяти')
     volume = models.IntegerField(verbose_name='Объем памяти')
@@ -110,6 +118,9 @@ class RAMemory(Product):
     class Meta:
         verbose_name = 'Оперативная память'
         verbose_name_plural = 'Оперативная память'
+
+    def get_absolute_url(self):
+        return reverse('product_detail_url',kwargs={'slug':self.slug, 'category': self.category.slug})
 
 
 
