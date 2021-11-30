@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django import forms
 from .models import HelpMessage
 from django.http import HttpResponse
@@ -17,6 +17,7 @@ def get_message_form(request):
 
 def save_form(request):
     form = MessageForm(request.POST)
+
     if form.is_valid():
         data = form.cleaned_data
         firstname = data.get('firstname')
@@ -26,4 +27,4 @@ def save_form(request):
         obj = HelpMessage(firstname = firstname, surname = surname,
                           email = email, message = message)
         obj.save()
-    return HttpResponse('Save message!!!')
+    return redirect("/")

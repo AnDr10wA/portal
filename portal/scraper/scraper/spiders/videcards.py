@@ -1,5 +1,5 @@
 import scrapy
-from scraper.items import ScraperItem
+from scraper.scraper.items import ScraperItem
 
 
 class ComputesSpider(scrapy.Spider):
@@ -20,32 +20,67 @@ class ComputesSpider(scrapy.Spider):
 
     def parse_product(self, response):
         product = response.css('div.main__container')
+        table = response.xpath('//table[@class="product-params__table"]/tbody/tr')
+        price_block = response.xpath('//div[@class="price-block "]')
+        slug_block = response.xpath('//div[@class="same-part-kt__common-info"]')
+        image_block = response.xpath('//div[@class="slide__content img-plug current"]')
+
 
         for prod in product:
             pr_item = ScraperItem()
-            price = prod.css('span.price-block__commission-current-price::text').get()
+            price = price_block.xpath('div[@class="price-block__content"]/p[@class="price-block__price-wrap"]/span[@class="price-block__final-price"]/text()').get()
             name = prod.css('h1.same-part-kt__header > span::text').get()
-            descr = prod.css('div.j-description > p::text').get()
-            vproc = prod.css('table.product-params__table > td.product-params__cell').get()
+            # descr = prod.css('div.j-description > p::text').get()
+            slug = slug_block.xpath('p[@class="same-part-kt__article"]/span[@id="productNmId"]/text()').get()
+            image = image_block.xpath('picture/source/@srcset').get()[2:]
+
+            for row in table:
+
+                if row.xpath('th/span[ @class="product-params__cell-decor"]/span/text()').get() == 'Видеопроцессор':
+                    vproc = row.xpath('td/text()').get()
+                elif row.xpath('th/span[ @class="product-params__cell-decor"]/span/text()').get() == 'Модель':
+                    model = row.xpath('td/text()').get()
+                elif row.xpath('th/span[ @class="product-params__cell-decor"]/span/text()').get() == 'Производитель видеопроцессора':
+                    company = row.xpath('td/text()').get()
+                elif row.xpath('th/span[ @class="product-params__cell-decor"]/span/text()').get() == 'Объем памяти видеоадаптера':
+                    videomemory = row.xpath('td/text()').get()
+                    videomemory = videomemory.replace('Гб', '').replace('Мб', '').replace('Gb', '').strip()
+
+
+
 
             if price != None:
                 price = price.replace('\u00a0', '').replace('\u20bd', '').strip()
             else:
                 price = 0
             # print(f'{price}-{name}')
-            # pr_item['name'] = name
-            # pr_item['price'] = price
-            # pr_item['description'] = descr
+            pr_item['manufacture'] = name
+            pr_item['price'] = price
+            pr_item['model_product'] = model
+            pr_item['processor'] = vproc
+            pr_item['videomemory'] = videomemory
+            pr_item['category'] = 'videocard'
+            pr_item['image'] = image
+            pr_item['slug'] = slug
+            pr_item['company'] = company
 
-            yield {
+            yield pr_item
 
-                'link': response.url,
-                'name': name,
-                'description': descr,
-                'price': price,
-                'vproc': vproc
 
-            }
+            #
+            # {
+            #
+            #
+            #     'name': name,
+            #     'model': model,
+            #     'price': price,
+            #     'vproc': vproc,
+            #     'slug': slug,
+            #     'company':company,
+            #     'videomemory': videomemory,
+            #     'image': image
+            #
+            # }
 
 
 

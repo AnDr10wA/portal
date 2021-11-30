@@ -4,32 +4,27 @@
 
 {% block content %}
 
-{% for category in categoryes %}
- <div class="container px-4 py-5" id="hanging-icons">
-    <h2 class="pb-2 border-bottom">{{category|safe}}</h2>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-      <div class="col d-flex align-items-start">
-        <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
+<div class="container">
+    {% for category in categoryes  %}
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+
+          <h3 class="mb-0">{{category.title|safe}}</h3>
+          <div class="mb-1 text-muted">{{category.body|safe}}</div>
+          <p class="card-text mb-auto"></p>
+
+          <a href="{{ category.get_absolute_url }}" class="btn btn-primary">Continue reading</a>
+
         </div>
-        <div>
-          <h2>{{category.title|safe}}</h2>
-          <p>{{category.body|safe}}</p>
-          <a href="{{ category.get_absolute_url }}" class="btn btn-primary">
-            More
-          </a>
-        </div>
-      </div>
-      <div class="col d-flex align-items-start">
-        <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"/></svg>
-        </div>
-        <div>
 
       </div>
     </div>
+    {% endfor  %}
+
   </div>
+
 <!--<a href="{{ category.get_absolute_url }}" class="stretched-link">{{category}}</a>-->
-{% endfor %}
+
 
 {% endblock %}

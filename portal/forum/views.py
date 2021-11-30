@@ -13,7 +13,7 @@ def category_forum_deteil(request, slug):
 
     category = get_object_or_404(CategoryForum, slug=slug)
     topics = category.topics.all()
-    return render(request, 'detail_category_forum.html', {'categoryes': topics})
+    return render(request, 'detail_category_forum.html', {'categoryes': topics, 'category':category})
 
 def topic_detail(request, slug):
     

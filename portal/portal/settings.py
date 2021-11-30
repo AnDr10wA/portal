@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-to6i^#19hm-=btvsoy@g%av+_z#6gqeqxvynm_@r3(7ej!mchr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "172.18.0.1", "172.18.0.3"]
+ALLOWED_HOSTS = ["127.0.0.1", "172.18.0.1", "172.18.0.3", "0.0.0.0"]
 
 
 # Application definition
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'help',
     'accounts',
     'forum',
+    'scraper'
 ]
 
 MIDDLEWARE = [
@@ -85,8 +86,8 @@ WSGI_APPLICATION = 'portal.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ.get("DB_ENGINE", 'django.db.backends.postgresql_psycopg2'),
-        'NAME': os.environ.get("DB_NAME", 'portal_db'),
+        'ENGINE': os.environ.get("DB_ENGINE", 'django.db.backends.sqlite3'),
+        'NAME': os.environ.get("DB_NAME",  BASE_DIR / 'db.sqlite3'),
           'USER': os.environ.get("DB_USER", 'admin_portal'),
           'PASSWORD': os.environ.get("DB_PASS", 'admin_secret'),
           'HOST': os.environ.get("DB_HOST", 'localhost'),

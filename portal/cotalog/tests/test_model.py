@@ -13,7 +13,7 @@ class VideocartModelTest(TestCase):
                                            image = image,
                                            price = 1999.99, category=category,
                                            company = 'Nvidia',
-                                           processor = '1660ti')
+                                           processor = '1660ti',videomemory = '16')
 
 
     def test_product_manufacture(self):

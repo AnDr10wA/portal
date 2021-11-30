@@ -1,5 +1,5 @@
 from django.test import TestCase
-from cotalog.models import Processor
+from cotalog.models import Processor, Category
 class CotalogDetailViewTest(TestCase):
     @classmethod
     def setUpTestData(cls):
