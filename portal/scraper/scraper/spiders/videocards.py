@@ -1,6 +1,6 @@
 import scrapy
 from scraper.scraper.items import ScraperItem
-
+from cotalog.models import Category, Videocard
 
 class ComputesSpider(scrapy.Spider):
     name = 'videocards'
@@ -59,7 +59,7 @@ class ComputesSpider(scrapy.Spider):
             pr_item['model_product'] = model
             pr_item['processor'] = vproc
             pr_item['videomemory'] = videomemory
-            pr_item['category'] = 'videocard'
+            pr_item['category'] = Category.objects.get(name = 'videocard')
             pr_item['image'] = image
             pr_item['slug'] = slug
             pr_item['company'] = company
